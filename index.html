@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JokenPô Pro</title>
+    <link rel="stylesheet" href="./styles.css">
+</head>
+
+<body>
+    <header class="header">
+        <div class="logo">
+            <span class="logo-icon">✊</span>
+            <span>JokenPô</span>
+        </div>
+
+        <div class="header-actions">
+            <button class="icon-button" id="theme-button" type="button" aria-label="Alterar tema">
+                🌙
+            </button>
+
+            <button class="icon-button" id="sound-button" type="button" aria-label="Ativar ou desativar som">
+                🔊
+
+            </button>
+        </div>
+    </header>
+
+    <main class="game-container">
+        <section class="hero">
+            <span class="badge">
+                🎮 JOGO CLÁSSICO
+            </span>
+            <h1> Pedra, Papel
+                <span>&amp; Tesoura</span>
+            </h1>
+            <p>
+                Escolha sua jogada e desafie o computador.
+            </p>
+
+        </section>
+
+
+        <section class="scoreboard">
+            <div class="player-score">
+                <span class="score-label">
+                    VOCÊ
+                </span>
+                <strong id="player-score">
+                    0
+                </strong>
+
+            </div>
+
+            <div class="score-divider">
+                <span>VS</span>
+
+            </div>
+
+            <div class="player-score">
+                <span class="score-label">
+                    COMPUTADOR
+                </span>
+                <strong id="computer-score">
+                    0
+                </strong>
+
+            </div>
+
+        </section>
+
+        <!-- Área da partida -->
+        <section class="battle">
+            <div class="battle-player">
+                <span class="battle-label">
+                    SUA JOGADA
+                </span>
+
+                <div class="choice-display" id="player-choice" aria-label="Sua escolha">
+                    ?
+                </div>
+
+            </div>
+
+            <div class="battle-result">
+                <span id="result-icon">
+                    ⚔️
+                </span>
+                <p id="result-message">
+                    Faça sua escolha
+                </p>
+
+            </div>
+
+            <div class="battle-player">
+                <span class="battle-label">
+                    COMPUTADOR
+                </span>
+
+                <div class="choice-display" id="computer-choice" aria-label="Escolha o computador">
+                    ?
+                </div>
+            </div>
+
+        </section>
+
+        <!-- Escolha -->
+        <section class="choices-section">
+            <div class="section-heading">
+                <h2>Escolha sua jogada</h2>
+                <p>
+                    Clique em uma opção para jogar
+                </p>
+
+            </div>
+
+            <div class="choices">
+                <button class="choice-card" id="rock" type="button" aria-label="Escolha Pedra">
+                    <span class="choice-icon">
+                        &#x270A;
+                    </span>
+                    <span class="choice-name">
+                        Pedra
+                    </span>
+                    <span class="choice-key">
+                        Tecla 1
+                    </span>
+
+                </button>
+
+                <button class="choice-card" id="paper" type="button" aria-label="Escolher papel">
+                    <span class="choice-icon">
+                        &#x1F590;
+                    </span>
+                    <span class="choice-name">
+                        Papel
+                    </span>
+                    <span class="choice-key">
+                        Tecla 2
+                    </span>
+
+                </button>
+
+                <button class="choice-card" id="scissors" type="button" aria-label="Escolher tesoura">
+                    <span class="choice-icon">
+                        &#x270C;
+                    </span>
+                    <span class="choice-name">
+                        Tesoura
+                    </span>
+                    <span class="choice-key">
+                        Tecla 3
+                    </span>
+
+                </button>
+
+            </div>
+
+        </section>
+
+        <!-- Estatísticas -->
+        <section class="status">
+            <div class="stat-card">
+                <span class="stat-icon">
+                    🔥
+                </span>
+
+                <div>
+                    <span class="stat-label">
+                        Sequência
+                    </span>
+                    <strong id="streak">
+                        0
+                    </strong>
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-icon">
+                    🏆
+                </span>
+                <div>
+                    <span class="stat-label">
+                        Vitórias
+                    </span>
+                    <strong id="wins">
+                        0
+                    </strong>
+                </div>
+
+            </div>
+
+            <div class="stat-card">
+                <span class="stat-icon">
+                    🎯
+                </span>
+
+                <div>
+                    <span class="stat-label">
+                        Partidas
+                    </span>
+                    <strong id="matches">
+                        0
+                    </strong>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="game-controls">
+            <button class="secondary-button" id="reset-button" type="button">
+                🔄 Reiniciar partida
+            </button>
+
+        </section>
+
+    </main>
+
+    <footer>
+        <p>Desenvolvido por
+            <strong>Raí Salazar</strong>
+        </p>
+        <span> HTML • CSS • JavaScript</span>
+    </footer>
+
+    <script src="./script.js"></script>
+
+</body>
+
+</html>
