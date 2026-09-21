@@ -81,6 +81,9 @@ const SUSPENSE_TIME = 700;
 // Velocidade que os emojis trocam durante o suspense
 const SUSPENSE_SPEED = 100;
 
+// Vitórias necessárias para ganhar o jogo (melhor de 5 = 3)
+const WINS_TO_WIN = 3;
+
 //Estado do jogo
 const state = {
     playerScore: 0,
@@ -90,6 +93,9 @@ const state = {
 
     // True enquanto o computador está "pensando"
     isPlaying: false,
+
+     // True quando alguém já chegou a 3 vitórias
+    gameOver: false,
 
     soundOn: true,
     theme: "dark"
@@ -305,7 +311,7 @@ function cancelSuspense() {
 // Rodada
 function play(playerChoice) {
     // Ignora cliques enquanto a rodada anterior não teerminou
-    if (state.isPlaying) {
+    if (state.isPlaying || state.gameOver) {
         return;
     }
 
@@ -324,6 +330,22 @@ function play(playerChoice) {
     startSuspense(function () {
         finishRound(playerChoice, computerChoice);
     });
+}
+
+function checkGameOver() {
+    if (state.playerScore < WINS_TO_WIN && state.computerScore < WINS_TO_WIN) {
+        return;
+    }
+
+    state.gameOver = true;
+
+    const playerWon = state.playerScore >= WINS_TO_WIN;
+
+    resultIcon.textContent = playerWon ? "🏆" : "💀";
+    resultMessage.textContent = playerWon ? "Você é campeão!" : "Fim de jogo";
+    resultMessage.style.color = playerWon ? "var(--success)" : "var(--danger)";
+
+    resetButton.textContent = "🔄 Jogar novamente";
 }
 
 function finishRound(playerChoice, computerChoice) {
@@ -347,6 +369,7 @@ function finishRound(playerChoice, computerChoice) {
     updateScoreboard();
     updateStats();
     showResult(result);
+    checkGameOver();
 
     sounds[result]();
 
@@ -363,6 +386,9 @@ function resetGame() {
     state.streak = 0;
     state.matches = 0;
     state.isPlaying = false;
+
+    state.gameOver = false;
+    resetButton.textContent = "🔄 Reiniciar partida";
 
     updateScoreboard();
     updateStats();
